@@ -17,7 +17,7 @@ app.set("view engine", "ejs");
 
 app.set("views", "./app/views");
 
-consign()
+consign({cwd: process.cwd()})
     .include("app/routes")
     .then("app/controllers")
     .into(app);
