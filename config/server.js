@@ -20,7 +20,6 @@ app.set("views", "./app/views");
 consign()
     .include("app/routes")
     .then("app/controllers")
-    .then("app/views")
     .into(app);
 
 module.exports = app;
