@@ -1,60 +1,56 @@
 
 
-// module.exports.analisar = (application, req, res) => {
-//     let patrimonioLiquido = parseFloat(req.body.patrimonioLiquido);
-//     let vpa = parseFloat(req.body.vpa);
-//     let pVPA = parseFloat(req.body.pVPA);
-//     let numeroAcoes = parseFloat(req.body.numeroAcoes);
-//     let rpl = parseFloat(req.body.rpl);
-//     let precoAcao = parseFloat(req.body.precoAcao);
-//     let lucroLiquido = parseFloat(req.body.lucroLiquido);
-//     let lucroAcao = parseFloat(req.body.lucroAcao);
-//     let dividendoAcao = parseFloat(req.body.dividendoAcao);
-//     let payOut = parseFloat(req.body.payOut);
-//     let mercadoriasVendidas = parseFloat(req.body.mercadoriasVendidas);
-//     let despesasOperacionais = parseFloat(req.body.despesasOperacionais);
-//     let depreciação = parseFloat(req.body.depreciação);
-//     let amortizacao = parseFloat(req.body.amortizacao);
-//     let ebitda = parseFloat(req.body.ebitda);
-//     let valorMercado = parseFloat(req.body.valorMercado);
-//     let dividendYield = parseFloat(req.body.dividendYield);
-//     let pl = parseFloat(req.body.pl);
+module.exports.analisar = (application, req, res) => {
+    let patrimonioLiquido = parseFloat(req.body.patrimonioLiquido);
+    let vpa = parseFloat(req.body.vpa);
+    let pVPA = parseFloat(req.body.pVPA);
+    let numeroAcoes = parseFloat(req.body.numeroAcoes);
+    let rpl = parseFloat(req.body.rpl);
+    let precoAcao = parseFloat(req.body.precoAcao);
+    let lucroLiquido = parseFloat(req.body.lucroLiquido);
+    let lucroAcao = parseFloat(req.body.lucroAcao);
+    let dividendoAcao = parseFloat(req.body.dividendoAcao);
+    let payOut = parseFloat(req.body.payOut);
+    let mercadoriasVendidas = parseFloat(req.body.mercadoriasVendidas);
+    let despesasOperacionais = parseFloat(req.body.despesasOperacionais);
+    let depreciação = parseFloat(req.body.depreciação);
+    let amortizacao = parseFloat(req.body.amortizacao);
+    let ebitda = parseFloat(req.body.ebitda);
+    let valorMercado = parseFloat(req.body.valorMercado);
+    let dividendYield = parseFloat(req.body.dividendYield);
+    let pl = parseFloat(req.body.pl);
 
-//     //Chama as funções
-//     let vpaResult = calcular_vpa(vpa, patrimonioLiquido, numeroAcoes, precoAcao);
-//     let p_vpaResult = calcular_p_vpa(pVPA, precoAcao, vpaResult.valor)
-//     let ebitdaResult = calcular_ebitda(ebitda, calcular_lucroOperacional(mercadoriasVendidas, despesasOperacionais), depreciação, amortizacao);
-//     let payOutResult = calcular_payOut(payOut, dividendoAcao, lucroLiquido);
-//     let valorMercadoResult = calcular_valorMercado(valorMercado, precoAcao, numeroAcoes);
-//     let valorMercadoEBITDAResult = calcular_valorEmpresa_ebitda(valorMercadoResult.valor, ebitdaResult.valor);
-//     let dividendYieldResult = calcular_dividendYield(dividendYield, dividendoAcao, valorMercadoResult.valor);
-//     let rplResult = calcular_rpl(rpl, lucroLiquido, patrimonioLiquido);
-//     let lucroAcaoResult = calcular_lucroAcao(lucroAcao, lucroLiquido, numeroAcoes);
-//     let plResult = calcular_preco_lucro(pl, precoAcao, lucroAcaoResult.valor);
+    //Chama as funções
+    let vpaResult = calcular_vpa(vpa, patrimonioLiquido, numeroAcoes, precoAcao);
+    let p_vpaResult = calcular_p_vpa(pVPA, precoAcao, vpaResult.valor)
+    let ebitdaResult = calcular_ebitda(ebitda, calcular_lucroOperacional(mercadoriasVendidas, despesasOperacionais), depreciação, amortizacao);
+    let payOutResult = calcular_payOut(payOut, dividendoAcao, lucroLiquido);
+    let valorMercadoResult = calcular_valorMercado(valorMercado, precoAcao, numeroAcoes);
+    let valorMercadoEBITDAResult = calcular_valorEmpresa_ebitda(valorMercadoResult.valor, ebitdaResult.valor);
+    let dividendYieldResult = calcular_dividendYield(dividendYield, dividendoAcao, valorMercadoResult.valor);
+    let rplResult = calcular_rpl(rpl, lucroLiquido, patrimonioLiquido);
+    let lucroAcaoResult = calcular_lucroAcao(lucroAcao, lucroLiquido, numeroAcoes);
+    let plResult = calcular_preco_lucro(pl, precoAcao, lucroAcaoResult.valor);
 
-//     let result = {
-//         "Valor patrimonial da ação": vpaResult,
-//         "Preço por valor patrimonial da ação": p_vpaResult,
-//         "Rentabilidade sobre patrimônio": rplResult,
-//         "Lucro por ação": lucroAcaoResult,
-//         "Índice P/L": plResult,
-//         "Dividend Yield": dividendYieldResult,
-//         "EBITDA": ebitdaResult,
-//         "payOut": payOutResult,
-//         "Valor de mercado da empresa sobre EBITDA": valorMercadoEBITDAResult,
-//         "Valor de mercado": valorMercadoResult
-//     }
-//     res.json(result);
-// }
-
-// module.exports.render = (application, req, res) => {
-//     res.render("home");
-// }
-module.exports = (application, req, res) => {
-    this.render = () => {
-        res.render("home");
+    let result = {
+        "Valor patrimonial da ação": vpaResult,
+        "Preço por valor patrimonial da ação": p_vpaResult,
+        "Rentabilidade sobre patrimônio": rplResult,
+        "Lucro por ação": lucroAcaoResult,
+        "Índice P/L": plResult,
+        "Dividend Yield": dividendYieldResult,
+        "EBITDA": ebitdaResult,
+        "payOut": payOutResult,
+        "Valor de mercado da empresa sobre EBITDA": valorMercadoEBITDAResult,
+        "Valor de mercado": valorMercadoResult
     }
+    res.json(result);
 }
+
+module.exports.render = (application, req, res) => {
+    res.render("home");
+}
+
 //Functions
 let calcular_vpa = (vpa, patrimonioLiquido, numeroAcoes, precoAcao) => {
     let result = {
