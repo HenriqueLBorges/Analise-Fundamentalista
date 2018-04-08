@@ -16,7 +16,7 @@ app.use(express.static("./app/public"));
 app.set("view engine", "ejs");
 
 app.set("views", "./app/views");
-
+console.log("caminho =", process.cwd())
 consign({cwd: process.cwd()})
     .include("app/routes")
     .then("app/controllers")

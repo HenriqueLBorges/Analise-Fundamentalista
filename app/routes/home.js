@@ -1,10 +1,8 @@
 module.exports = (application) => {
-    console.log("application.app.controllers fora =", application.app);
-    application.post("/api/analisar", function (req, res){
+    application.post("/api/analisar", (req, res) => {
         application.app.controllers.home.analisar(application, req, res);
     });
-    application.get("/", function (req, res){
-        console.log("application.app.controllers dentro =", application.app.controllers);
+    application.get("/", (req, res) => {
         application.app.controllers.home.render(application, req, res);
     });
 }
