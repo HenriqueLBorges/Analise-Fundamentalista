@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Análise Fundamentalista</title>
+
+    <!-- JQuery -->
+    <script src="scripts/jquery-2.2.1.js"></script>
+
+    <!-- bootstrap - link cdn -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+        
+    <script>
+        $(document).ready(() => {
+            $("#resultadoContainer").hide();
+            $("#btnCalcular").click(() => {
+                let data = {
+                        "patrimonioLiquido": parseFloat($("#patrimonioLiquido").val()),
+                        "vpa": parseFloat($("#vpa").val()),
+                        "pVPA": parseFloat($("#pVpa").val()),
+                        "numeroAcoes": parseFloat($("#numeroAcoes").val()),
+                        "rpl": parseFloat($("#rpl").val()),
+                        "precoAcao": parseFloat($("#precoAcao").val()),
+                        "lucroLiquido": parseFloat($("#lucroLiquido").val()),
+                        "lucroAcao": parseFloat($("#lucroAcao").val()),
+                        "dividendoAcao": parseFloat($("#dividendoAcao").val()),
+                        "payOut": parseFloat($("#payOut").val()),
+                        "mercadoriasVendidas": parseFloat($("#mercadoriasVendidas").val()),
+                        "despesasOperacionais": parseFloat($("#despesasOperacionais").val()),
+                        "depreciação": parseFloat($("#depreciação").val()),
+                        "amortizacao": parseFloat($("#amortizacao").val()),
+                        "ebitda": parseFloat($("#ebitda").val()),
+                        "valorMercado": parseFloat($("#valorMercado").val()),
+                        "dividendYield": parseFloat($("#dividendYield").val()),
+                        "pl": parseFloat($("#pl").val()),
+                    }
+                    console.log("request =", data)
+                $.ajax({
+                    url: "/api/analisar",
+                    method: "post",
+                    data: data,
+                    success: (data) => {
+                        console.log("data =", data);
+                        $("#resultadoContainer").show();
+                        Object.keys(data).forEach(key => {
+                            $("#resultado").append("<li>"+key+" - valor = "+data[key].valor + ". Texto = " + data[key].texto + "</li>");
+                        });
+                    },
+                    error: (error) => {
+                        console.log("error =", error)
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body class="body-index">
+    <div class="container ">
+        <div class="container">
+            <div class="form-group">
+                <form class="form-inline form-entrar" action="/api/analisar" method="post">
+                    <input type="number" name="Patrimônio líquido" id="patrimonioLiquido" placeholder="Patrimônio líquido" class="form-control"
+                        autocomplete="off" />
+                    <input type="number" name="Valor patrimonial da ação" id="vpa" placeholder="Valor patrimonial da ação" class="form-control"
+                    />
+                    <input type="number" name="Preço por valor patrimonial da ação" id="pVpa" placeholder="Preço por valor patrimonial da ação"
+                        class="form-control" />
+                    <input type="number" name="Rentabilidade sobre patrimônio líquido" id="rpl" placeholder="Rentabilidade sobre patrimônio líquido"
+                        class="form-control" />
+                    <input type="number" name="Índice P/L" id="pl" placeholder="Índice P/L" class="form-control" />
+                    <input type="number" name="Payout" id="payout" placeholder="Payout" class="form-control" />
+                    <input type="number" name="Número de ações" id="numeroAcoes" placeholder="Número de ações" class="form-control" />
+                    <input type="number" name="Preço por ação" id="precoAcao" placeholder="Preço por ação" class="form-control" />
+                    <input type="number" name="Lucro por ação" id="lucroAcao" placeholder="Lucro por ação" class="form-control" />
+                    <input type="number" name="Total de dividendos" id="dividendoAcao" placeholder="Total de dividendos" class="form-control" />
+                    <input type="number" name="Lucro líquido" id="lucroLiquido" placeholder="Lucro líquido" class="form-control" />
+                    <input type="number" name="Mercadorias vendidas" id="mercadoriasVendidas" placeholder="Mercadorias vendidas" class="form-control"
+                    />
+                    <input type="number" name="Despesas operacionais" id="despesasOperacionais" placeholder="Despesas operacionais" class="form-control"
+                    />
+                    <input type="number" name="Depreciação" id="depreciacao" placeholder="Depreciação" class="form-control" />
+                    <input type="number" name="Amortização" id="amortizacao" placeholder="Amortização" class="form-control" />
+                    <input type="number" name="EBITDA" id="ebitda" placeholder="EBITDA" class="form-control" />
+                    <input type="number" name="Valor de mercado" id="valorMercado" placeholder="Valor de mercado" class="form-control" />
+                    <input type="number" name="Dividend Yield" id="senha" placeholder="Dividend Yield" class="form-control" />
+                </form>
+                <button type="button" class="btn btn-info" id="btnCalcular">Calcular</button>
+            </div>
+        </div>
+        <div class="container" id="resultadoContainer">
+            <ol class="alert alert-info" id="resultado">
+              </ol> 
+              
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

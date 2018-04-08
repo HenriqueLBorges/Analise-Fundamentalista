@@ -1,0 +1,20 @@
+{
+  "name": "analise-fundamentalista",
+  "version": "1.0.0",
+  "description": "Uma API capaz de realizar analise fundamentalista de empresas.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "nodemon -r dotenv/config app.js dotenv_config_path=/Users/henriqueborges/Documents/GitHub/analise-fundamentalista/config.env"
+  },
+  "author": "henriquelborges",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "consign": "^0.1.6",
+    "dotenv": "^5.0.1",
+    "ejs": "^2.5.8",
+    "express": "^4.16.3",
+    "express-validator": "^5.1.1"
+  }
+}
