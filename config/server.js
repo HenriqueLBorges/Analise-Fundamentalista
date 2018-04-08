@@ -17,7 +17,7 @@ app.set("view engine", "ejs");
 
 app.set("views", "./app/views");
 console.log("caminho =", process.cwd())
-consign({cwd: process.cwd()})
+consign()
     .include("app/routes")
     .then("app/controllers")
     .into(app);
