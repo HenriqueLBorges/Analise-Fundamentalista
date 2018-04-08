@@ -19,7 +19,7 @@ module.exports.analisar = (application, req, res) => {
     let valorMercado = parseFloat(req.body.valorMercado);
     let dividendYield = parseFloat(req.body.dividendYield);
     let pl = parseFloat(req.body.pl);
-    
+
     //Chama as funções
     let vpaResult = calcular_vpa(vpa, patrimonioLiquido, numeroAcoes, precoAcao);
     let p_vpaResult = calcular_p_vpa(pVPA, precoAcao, vpaResult.valor)
@@ -48,7 +48,7 @@ module.exports.analisar = (application, req, res) => {
 }
 
 module.exports.render = (application, req, res) => {
-    res.render("home", { validacao: {} });
+    res.render("home");
 }
 
 //Functions
