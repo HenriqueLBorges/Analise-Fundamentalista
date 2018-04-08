@@ -3,6 +3,7 @@ module.exports = (application) => {
         application.app.controllers.home.analisar(application, req, res);
     });
     application.get("/", (req, res) => {
-        application.app.controllers.home.render(application, req, res);
+        //application.app.controllers.home.render(application, req, res);
+        res.render("home");
     });
 }
