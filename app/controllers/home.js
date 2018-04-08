@@ -50,7 +50,7 @@
 // module.exports.render = (application, req, res) => {
 //     res.render("home");
 // }
-module.exports = () => {
+module.exports = (application, req, res) => {
     this.render = () => {
         res.render("home");
     }
